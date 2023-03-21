@@ -1,18 +1,30 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Sketchfab AR</title>
-    <script src="https://cdn.jsdelivr.net/npm/@modelviewer/latest/dist/model-viewer.js"></script>
-  </head>
-  <body>
-    <model-viewer
-      id="model"
-      ar
-      src="https://sketchfab.com/models/9825d2aaf243470990409ff94b383542"
-      ios-src="https://sketchfab.com/models/9825d2aaf243470990409ff94b383542/tappo.usdz"
-      alt="A 3D model"
-      camera-controls
-      auto-rotate
-    ></model-viewer>
-  </body>
+<head>
+  <title>Sketchfab AR Viewer Example</title>
+  <script src="https://static.sketchfab.com/api/sketchfab-viewer-1.14.0.js"></script>
+</head>
+<body>
+  <div style="width: 100%; height: 100vh">
+    <div id="api-frame" style="width: 100%; height: 100%;"></div>
+  </div>
+
+  <script>
+    const iframe = document.getElementById('api-frame');
+    const version = '1.14.0';
+
+    const url = 'https://sketchfab.com/models/9825d2aaf243470990409ff94b383542/ar';
+
+    const client = new window.Sketchfab(version, iframe);
+
+    client.init(url, {
+      success: function onSuccess(api) {
+        api.start();
+      },
+      error: function onError() {
+        console.log('Error while initializing the Sketchfab AR Viewer');
+      }
+    });
+  </script>
+</body>
 </html>

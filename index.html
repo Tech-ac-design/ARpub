@@ -1,14 +1,18 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Sketchfab 3D Model in AR</title>
-</head>
-<body>
-	<!-- Replace "sketchfab-model-id" with the actual ID of your Sketchfab 3D model -->
-	<model-viewer ios-src="https://sketchfab.com/models/9825d2aaf243470990409ff94b383542/embed?ar_mode=1&ios_safari=1" ar>
-		<p>Your browser does not support the <code>model-viewer</code> element.</p>
-	</model-viewer>
-</body>
+  <head>
+    <title>Sketchfab AR</title>
+    <script src="https://cdn.jsdelivr.net/npm/@modelviewer/latest/dist/model-viewer.js"></script>
+  </head>
+  <body>
+    <model-viewer
+      id="model"
+      ar
+      src="https://sketchfab.com/models/your-model-id-goes-here"
+      ios-src="https://sketchfab.com/models/9825d2aaf243470990409ff94b383542/tappo.usdz"
+      alt="A 3D model"
+      camera-controls
+      auto-rotate
+    ></model-viewer>
+  </body>
 </html>

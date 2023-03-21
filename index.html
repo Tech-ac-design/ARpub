@@ -1,20 +1,56 @@
 <!DOCTYPE html>
-<html>
-    <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta charset="utf-8">
-    <title>Sketchfab AR Viewer</title>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <title>Sketchfab Web-AR Example</title>
     <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
-    <script src="https://cdn.sketchfab.com/webxr/latest/webxr.js"></script>
+    <script src="https://cdn.sketchfab.com/4.13.0/api/sketchfab-viewer-1.13.0.min.js"></script>
   </head>
   <body>
-    <a-scene xrwebgl>
-      <a-assets>
-        <a-asset-item id="model" src="https://sketchfab.com/models/9825d2aaf243470990409ff94b383542/download"></a-asset-item>
-      </a-assets>
-      <a-marker-camera preset="hiro"></a-marker-camera>
-      <a-entity gltf-model="#model" scale="0.01 0.01 0.01" position="0 0 0"></a-entity>
+    <a-scene embedded arjs="sourceType: webcam; debugUIEnabled: false;">
+      <a-marker preset="hiro">
+        <a-entity id="model" position="0 0 0" scale="0.01 0.01 0.01"></a-entity>
+      </a-marker>
+      <a-entity camera></a-entity>
     </a-scene>
+
+    <script>
+      const version = '1.13.0'; // Replace with the Sketchfab API version you want to use
+      const uid = '9825d2aaf243470990409ff94b383542'; // Replace with your Sketchfab model UID
+
+      const iframe = document.createElement('iframe');
+      iframe.style.display = 'none';
+      iframe.src = `https://sketchfab.com/models/${uid}/embed?api_version=${version}&ar_mode=1`;
+
+      document.body.appendChild(iframe);
+
+      const api = new Sketchfab(viewerIframe);
+
+      api.init((err) => {
+        if (err) {
+          console.error(err);
+          return;
+        }
+
+        api.start();
+        api.addEventListener('viewerready', () => {
+          api.getCameraLookAt((err, result) => {
+            if (err) {
+              console.error(err);
+              return;
+            }
+
+            const lookAt = result;
+            const model = document.querySelector('#model');
+            model.setAttribute('position', `${lookAt.x} ${lookAt.y} ${lookAt.z}`);
+            model.setAttribute('scale', '0.01 0.01 0.01');
+            model.setAttribute('gltf-model', `#${api.__internal.gltfNode.id}`);
+          });
+        });
+      });
+    </script>
   </body>
-  <div class="sketchfab-embed-wrapper"> <iframe title="Tappo" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" allow="autoplay; fullscreen; xr-spatial-tracking" xr-spatial-tracking execution-while-out-of-viewport execution-while-not-rendered web-share src="https://sketchfab.com/models/9825d2aaf243470990409ff94b383542/embed"> </iframe> <p style="font-size: 13px; font-weight: normal; margin: 5px; color: #4A4A4A;"> <a href="https://sketchfab.com/3d-models/tappo-9825d2aaf243470990409ff94b383542?utm_medium=embed&utm_campaign=share-popup&utm_content=9825d2aaf243470990409ff94b383542" target="_blank" rel="nofollow" style="font-weight: bold; color: #1CAAD9;"> Tappo </a> by <a href="https://sketchfab.com/accreative?utm_medium=embed&utm_campaign=share-popup&utm_content=9825d2aaf243470990409ff94b383542" target="_blank" rel="nofollow" style="font-weight: bold; color: #1CAAD9;"> accreative </a> on <a href="https://sketchfab.com?utm_medium=embed&utm_campaign=share-popup&utm_content=9825d2aaf243470990409ff94b383542" target="_blank" rel="nofollow" style="font-weight: bold; color: #1CAAD9;">Sketchfab</a></p></div>
 </html>

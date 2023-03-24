@@ -12,33 +12,27 @@
   </head>
   
   <body>
-     <p> Cap </p>
      <div id="Cap">
-        <!-- Use it like any other HTML element -->
-   
-        <model-viewer 
-                      src="../AR/assets/models/Cap.glb"
-                      ios-src="../AR/assets/models/Cap.usdz"
-                      alt="A 3D model of a cap"
-                      ar
-                      ar-modes="webxr scene-viewer quick-look"
-                      camera-controls
-                      environment-image="neutral"
-                      camera-target="0m 0m 100m"
-                      style="left:50%; right:50%; transform:translate(-50%,0);"
-                      <button slot="ar-button" id="ar-button">
-        View in your space
-    </button>
+         <p> Cap </p>
+         <model-viewer
+                       src="../AR/assets/models/Cap.glb"
+                       ios-src="../AR/assets/models/Cap.usdz"
+                       alt="A 3D model of a cap"
+                       ar
+                       ar-modes="webxr scene-viewer quick-look"
+                       camera-controls
+                       auto-rotate
+                       environment-image="neutral"
+                       camera-orbit="45deg 55deg"
+                       style="left:50%; right:50%; transform:translate(-50%,0);"
          >
          <!-- <button slot="ar-button" class="activate-ar"></button> -->
        </model-viewer>
     </div>
 
-    <p><br><br> Astronaut </p>
     <div id="Astronaut">
-        <!-- Use it like any other HTML element -->
-   
-        <model-viewer 
+        <p><br><br> Astronaut </p>
+        <model-viewer                       
                       src="../AR/assets/models/Astronaut.glb"
                       ios-src="../AR/assets/models/Astronaut.usdz"
                       alt="A 3D model of an Astronaut"
@@ -48,44 +42,10 @@
                       environment-image="neutral"
                       style="left:50%; right:50%; transform: translate(-50%,0);"
          >
-       </model-viewer>
+      </model-viewer>
     </div>
     
-   <p> Cap2 </p>
-     <div id="Cap2">
-        <!-- Use it like any other HTML element -->
-   
-        <model-viewer 
-                      src="../AR/assets/models/Cap.glb"
-                      ios-src="../AR/assets/models/Cap.usdz"
-                      alt="A 3D model of a cap"
-                      ar
-                      ar-modes="webxr scene-viewer quick-look"
-                      camera-controls
-                      environment-image="neutral"
-                      style="left:50%; right:50%; transform: translate(-50%,0);"
-         >
-         <!-- <button slot="ar-button" class="activate-ar"></button> -->
-       </model-viewer>
-    </div>
-
-    <p><br><br> Astronaut2 </p>
-    <div id="Astronaut2">
-        <!-- Use it like any other HTML element -->
-   
-        <model-viewer 
-                      src="../AR/assets/models/Astronaut.glb"
-                      ios-src="../AR/assets/models/Astronaut.usdz"
-                      alt="A 3D model of an Astronaut"
-                      ar
-                      ar-modes="webxr scene-viewer quick-look"
-                      camera-controls
-                      environment-image="neutral"
-                      style="left:50%; right:50%; transform: translate(-50%,0);"
-         >
-         <!-- <button slot="ar-button" class="activate-ar"></button> -->
-       </model-viewer>
-    </div>   
+  
   </body>
 </html>
 

@@ -37,16 +37,18 @@
     </div>
 
     <div id="Astronaut">
-        <p><br><br> Astronaut </p>
+        <h2><br><br> Astronaut </h2>
         <model-viewer                       
-                      src="../AR/assets/models/Astronaut.glb"
-                      ios-src="../AR/assets/models/Astronaut.usdz"
-                      alt="A 3D model of an Astronaut"
-                      ar
-                      ar-modes="webxr scene-viewer quick-look"
-                      camera-controls
-                      environment-image="neutral"
-                      style="left:50%; right:50%; transform: translate(-50%,0);"
+                       src="../AR/assets/models/Astronaut.glb"
+                       ios-src="../AR/assets/models/Astronaut.usdz"
+                       alt="A 3D model of an Astronaut"
+                       ar
+                       ar-modes="webxr scene-viewer quick-look"
+                       camera-controls
+                       environment-image="neutral"
+                       camera-orbit="45deg 55deg"
+                       ar-placement="floor"
+                       style="left:50%; right:50%; transform: translate(-50%,0);"
          >
       </model-viewer>
     </div>

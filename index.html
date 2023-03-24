@@ -24,9 +24,13 @@
                       ar-modes="webxr scene-viewer quick-look"
                       camera-controls
                       environment-image="neutral"
+                      camera-target="0m 0m 100m"
+                      <div id="ar-prompt">
+                        <img src="https://modelviewer.dev/shared-assets/icons/hand.png">
+                      </div>
                       style="left:50%; right:50%; transform: translate(-50%,0);"
          >
-         <button slot="ar-button" class="activate-ar"></button>
+         <!-- <button slot="ar-button" class="activate-ar"></button> -->
        </model-viewer>
     </div>
 
@@ -44,7 +48,6 @@
                       environment-image="neutral"
                       style="left:50%; right:50%; transform: translate(-50%,0);"
          >
-         <!-- <button slot="ar-button" class="activate-ar"></button> -->
        </model-viewer>
     </div>
     
